@@ -1,0 +1,18 @@
+.homepage-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchbar {
+    width: 60%;        
+}
+.searchbar form {
+    margin: 0%;
+}
+
+.trending-links a {    
+      margin: 0 1em;
+}

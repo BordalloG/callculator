@@ -1,0 +1,101 @@
+<h1> Juros Compostos </h1>
+<style>
+
+.content {
+ display : flex;
+ margin-bottom: 3%;
+ border: 1px solid black;
+ border-radius: 4px;
+ padding: 1%;
+}
+
+.content div {
+    padding: 0 2%;
+    
+}
+
+.input-section {
+    width: 40%;
+    border-right: 1px black solid;
+}
+
+.result-section {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+}
+
+.result-section div {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+}
+
+.result {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.formula-explanation {
+    width: 60%;    
+    border-right: 1px solid black;
+}
+
+.final-amount {
+  color: red; 
+}
+.initial-balance {
+  color: blue;
+}
+.interest-rate {
+  color: green;
+}
+.time-period {
+  color: purple;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+</style>
+<div class="content">
+    <div class="input-section">
+    <%= form_for :data, "#another", [phx_submit: "calculate"], fn f-> %>        
+        <span> Capital Inicial </span> <%= number_input f, :initial_balance, placeholder: "Capital Inicial" %>
+        <span> Taxa de Juros </span> <%= number_input f, :interest_rate, placeholder: "Taxa de Juros" %>
+        <span> Tempo </span> <%= number_input f, :time_period, placeholder: "Tempo" %>
+        <%= submit "Calcular" %>
+    <% end %>
+    </div>
+
+    <div class="result-section">
+        <div class="formula-explanation">
+            <p> <span class="final-amount bold"> M </span> = Montante</p>
+            <p> <span class="initial-balance bold"> C </span> = Capital Inicial</p>
+            <p> <span class="interest-rate bold"> i </span> = Taxa de juros</p>
+            <p> <span class="time-period bold"> t </span> = Tempo</p>
+        </div>
+        <div class="result">
+            <p> 
+              <span class="final-amount"> M </span> = 
+              <span class="initial-balance"> C </span> * (1 + <span class="interest-rate">i </span>) ^ 
+              <span class="time-period"> t </span>
+            </p>
+            <p> 
+              <span class="final-amount"> M </span> = 
+              <span class="initial-balance"> 
+                <%= @initial_balance %> 
+              </span> 
+              * (1 + <span class="interest-rate"><%= @interest_rate %> </span>) ^ 
+              <span class="time-period">
+                <%= @time_period %>
+              </span>
+            </p>
+            <p class="bold"> 
+              <span class="final-amount"> M </span> = <%= @result %> 
+            </p>
+        </div>        
+    </div>
+</div> 

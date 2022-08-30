@@ -18,6 +18,8 @@ defmodule CallculatorWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    live "/juros-compostos", CompoundInterestLive
   end
 
   # Other scopes may use custom stacks.
